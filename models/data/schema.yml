@@ -1,0 +1,69 @@
+version: 2
+
+models:
+
+  - name: stg_answers
+    columns:
+      - name: answer_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_badges
+    columns:
+      - name: badge_id
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        tests:
+          - relationships:
+              to: ref('stg_users')
+              field: user_id
+
+  - name: stg_comments
+    columns:
+      - name: comment_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_posts
+    columns:
+      - name: post_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_questions
+    columns:
+      - name: question_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_users
+    columns:
+      - name: user_id
+        tests:
+          - unique
+          - not_null
+
+  - name: post_tag_totals
+    columns:
+      - name: tag
+        tests:
+          - unique
+          - not_null
+
+  - name: post_tags
+    columns:
+      - name: post_id
+        tests:
+          - not_null
+          
+  - name: post_tag_timing
+    columns:
+      - name: post_id
+        tests:
+          - not_null
