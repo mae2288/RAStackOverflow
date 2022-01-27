@@ -22,13 +22,15 @@ final as (
     GROUP BY tag, post_dw, post_hour
 )
 
-SELECT tag,
-    post_dw,
-    post_hour,
-    total_posts,
-    total_no_accepted_answers,
-    total_unanswered
-FROM final 
+SELECT f.tag,
+    f.post_dw,
+    f.post_hour,
+    f.total_posts,
+    f.total_no_accepted_answers,
+    f.total_unanswered
+FROM final f
+JOIN {{ ref('top_25') }} t
+    ON t.tag = f.tag
 
 
 
